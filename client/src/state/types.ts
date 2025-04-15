@@ -25,7 +25,7 @@ export interface GetKpisResponse{
     totalRevenue: number;
     totalExpenses: number;
     expensesByCategory:ExpensesByCategory
-    monthyData:Array<Month>
+    monthlyData:Array<Month>
 }
 export interface GetProductsResponse {
   id: string;
