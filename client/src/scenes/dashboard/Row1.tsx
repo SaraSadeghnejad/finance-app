@@ -24,6 +24,18 @@ type Props = {};
 function Row1({}: Props) {
   const { palette } = useTheme();
   const { data } = useGetKpisQuery();
+    const revenueExpenses = useMemo(() => {
+      return (
+        data &&
+        data[0].monthlyData?.map(({ month, revenue, expenses }) => {
+          return {
+            name: month.substring(0, 3),
+            revenue: revenue,
+            expenses: expenses,
+          };
+        })
+      );
+    }, [data]);
     console.log(data);
     const revenue = useMemo(() => {
       return (
@@ -36,18 +48,7 @@ function Row1({}: Props) {
         })
       );
     }, [data]);
-  const revenueExpenses = useMemo(() => {
-    return (
-      data &&
-      data[0].monthlyData?.map(({ month, revenue, expenses }) => {
-        return {
-          name: month.substring(0, 3),
-          revenue: revenue,
-          expenses: expenses,
-        };
-      })
-    );
-  }, []);
+
     const revenueProfit = useMemo(() => {
       return (
         data &&
